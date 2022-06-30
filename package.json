@@ -1,12 +1,16 @@
 {
   "name": "drag-scroll-vue3",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "files": [
     "dist"
   ],
   "main": "./dist/drag-scroll.umd.js",
   "module": "./dist/drag-scroll.es.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VashUber/drag-scroll-vue3.git"
+  },
   "exports": {
     ".": {
       "import": "./dist/drag-scroll.es.js",
