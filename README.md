@@ -11,7 +11,7 @@ This package provide directive for drag scroll
 ```js
 import { createApp } from "vue";
 import App from "./App.vue";
-import dragScroll from "./directive/drag-scroll";
+import dragScroll from "drag-scroll-vue3";
 
 const app = createApp(App);
 
