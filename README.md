@@ -9,33 +9,34 @@ This package provide directive for drag scroll
 ## Basic usage
 
 ```js
-    import dragScroll from "drag-scroll-vue3"
+import { createApp } from "vue";
+import App from "./App.vue";
+import dragScroll from "./directive/drag-scroll";
 
-    const app = createApp(App);
-    app.directive("drag-scroll", dragScroll)
+const app = createApp(App);
 
-    ________________________________________
+app.directive("drag-scroll", dragScroll);
+app.mount("#app");
+```
 
-    <your-component-with-list v-drag-scroll>
-        <block />
-        <block />
-        <block />
-        <block />
-        <block />
-    </your-component-with-list>
-
+```js
+<your-component-with-list v-drag-scroll>
+  <block />
+  <block />
+  <block />
+  <block />
+  <block />
+</your-component-with-list>
 ```
 
 ## Modify speed
 
 ```js
-
-    <your-component-with-list v-drag-scroll.speed="2">
-        <block />
-        <block />
-        <block />
-        <block />
-        <block />
-    </your-component-with-list>
-
+<your-component-with-list v-drag-scroll.speed="2">
+  <block />
+  <block />
+  <block />
+  <block />
+  <block />
+</your-component-with-list>
 ```
