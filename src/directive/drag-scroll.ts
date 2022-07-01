@@ -15,7 +15,7 @@ const onMouseOver = (e: MouseEvent, el: HTMLElement) => {
   previousPosition = e.clientX;
 };
 
-const dragScroll = {
+const dragScroll: ObjectDirective = {
   created(el: HTMLElement, binding: DirectiveBinding) {
     if (binding.modifiers.speed) {
       speed = binding.value;
@@ -41,6 +41,6 @@ const dragScroll = {
       el.onmousemove = null;
     };
   },
-} as ObjectDirective;
+};
 
 export default dragScroll;
