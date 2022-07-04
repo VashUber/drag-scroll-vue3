@@ -11,13 +11,5 @@ export default defineConfig({
       name: "drag-scroll",
       fileName: (format) => `drag-scroll.${format}.js`,
     },
-    rollupOptions: {
-      external: ["vue"],
-      output: {
-        globals: {
-          vue: "Vue",
-        },
-      },
-    },
   },
 });
