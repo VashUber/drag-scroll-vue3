@@ -1,7 +1,13 @@
 <template>
-  <div class="list" v-drag-scroll>
-    <div v-for="i in 80" :key="i" class="block">
-      {{ i }}
+  <div>
+    <div class="list" v-drag-scroll>
+      <div v-for="i in 80" :key="i" class="block">
+        {{ i }}
+      </div>
+    </div>
+
+    <div class="wrapper" v-drag-scroll.options="{ speed: 2, direction: 'y' }">
+      <div class="xy-block"></div>
     </div>
   </div>
 </template>
@@ -12,6 +18,19 @@
 * {
   padding: 0;
   margin: 0;
+}
+
+.wrapper {
+  margin: 20px;
+  width: 350px;
+  height: 350px;
+  overflow: scroll;
+}
+
+.xy-block {
+  width: 500px;
+  height: 500px;
+  background: #7d4ec3;
 }
 
 .list {
@@ -26,7 +45,7 @@
   .block {
     background: #7d4ec3;
     min-width: 220px;
-    min-height: 120px;
+    height: 120px;
   }
 }
 </style>

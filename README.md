@@ -29,10 +29,12 @@ app.mount("#app");
 </your-component-with-list>
 ```
 
-## Modify speed
+In this case, scroll will work for all directions at a speed equal to 1
+
+## Modify speed and direction
 
 ```js
-<your-component-with-list v-drag-scroll.speed="2">
+<your-component-with-list v-drag-scroll.options="{ speed: 2, direction: 'all' }">
   <block />
   <block />
   <block />
@@ -40,3 +42,9 @@ app.mount("#app");
   <block />
 </your-component-with-list>
 ```
+
+Available direction option
+
+> - all
+> - x
+> - y

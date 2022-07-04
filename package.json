@@ -11,6 +11,11 @@
     "type": "git",
     "url": "git+https://github.com/VashUber/drag-scroll-vue3.git"
   },
+  "keywords": [
+    "vue 3",
+    "drag scroll",
+    "directive"
+  ],
   "exports": {
     ".": {
       "import": "./dist/drag-scroll.es.js",

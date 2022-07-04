@@ -1,24 +1,54 @@
 import { DirectiveBinding, ObjectDirective } from "vue";
 
-let previousPosition = 0;
-let speed = 1;
+enum Direction {
+  all = "all",
+  x = "x",
+  y = "y",
+}
+
+type OptionsType = {
+  speed: number;
+  direction: Direction;
+};
+
+let previousPositionX = 0;
+let previousPositionY = 0;
+const options: OptionsType = {
+  speed: 1,
+  direction: Direction.all,
+};
 
 const onMouseOver = (e: MouseEvent, el: HTMLElement) => {
-  const sign = previousPosition < e.clientX ? -1 : 1;
+  const signX = previousPositionX < e.clientX ? -1 : 1;
+  const signY = previousPositionY < e.clientY ? -1 : 1;
 
-  el.scrollTo({
-    left: el.scrollLeft + sign * Math.abs(e.clientX - previousPosition) * speed,
-    top: 0,
+  const scrollTo: ScrollToOptions = {
+    left:
+      options.direction === Direction.all || options.direction === Direction.x
+        ? el.scrollLeft +
+          signX * Math.abs(e.clientX - previousPositionX) * options.speed
+        : 0,
+
+    top:
+      options.direction === Direction.all || options.direction === Direction.y
+        ? el.scrollTop +
+          signY * Math.abs(e.clientY - previousPositionY) * options.speed
+        : 0,
+
     behavior: "smooth",
-  });
+  };
 
-  previousPosition = e.clientX;
+  el.scrollTo(scrollTo);
+
+  previousPositionX = e.clientX;
+  previousPositionY = e.clientY;
 };
 
 const dragScroll: ObjectDirective = {
   created(el: HTMLElement, binding: DirectiveBinding) {
-    if (binding.modifiers.speed) {
-      speed = binding.value;
+    if (binding.modifiers.options) {
+      options.speed = binding.value.speed || 1;
+      options.direction = binding.value.direction || Direction.all;
     }
   },
   mounted(el: HTMLElement) {
@@ -30,7 +60,9 @@ const dragScroll: ObjectDirective = {
     });
 
     el.onmousedown = (e) => {
-      previousPosition = e.clientX;
+      previousPositionX = e.clientX;
+      previousPositionY = e.clientY;
+
       el.onmousemove = (e) => onMouseOver(e, el);
     };
 
