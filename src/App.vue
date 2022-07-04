@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="list" v-drag-scroll>
+    <div class="list" v-drag-scroll.options="{ direction: 'x' }">
       <div v-for="i in 80" :key="i" class="block">
         {{ i }}
       </div>

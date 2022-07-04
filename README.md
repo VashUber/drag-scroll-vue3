@@ -34,7 +34,7 @@ In this case, scroll will work for all directions at a speed equal to 1
 ## Modify speed and direction
 
 ```js
-<your-component-with-list v-drag-scroll.options="{ speed: 2, direction: 'all' }">
+<your-component-with-list v-drag-scroll.options="{ speed: 2, direction: 'y' }">
   <block />
   <block />
   <block />
