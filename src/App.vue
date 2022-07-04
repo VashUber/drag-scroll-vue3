@@ -6,7 +6,11 @@
       </div>
     </div>
 
-    <div class="wrapper" v-drag-scroll.options="{ speed: 2, direction: 'y' }">
+    <div class="wrapper" v-drag-scroll.options="{ direction: 'x' }">
+      <div class="xy-block"></div>
+    </div>
+
+    <div class="wrapper" v-drag-scroll.options="{ direction: 'all' }">
       <div class="xy-block"></div>
     </div>
   </div>

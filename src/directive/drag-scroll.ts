@@ -13,12 +13,8 @@ type OptionsType = {
 
 let previousPositionX = 0;
 let previousPositionY = 0;
-const options: OptionsType = {
-  speed: 1,
-  direction: Direction.all,
-};
 
-const onMouseOver = (e: MouseEvent, el: HTMLElement) => {
+const onMouseOver = (e: MouseEvent, el: HTMLElement, options: OptionsType) => {
   const signX = previousPositionX < e.clientX ? -1 : 1;
   const signY = previousPositionY < e.clientY ? -1 : 1;
 
@@ -45,13 +41,17 @@ const onMouseOver = (e: MouseEvent, el: HTMLElement) => {
 };
 
 const dragScroll: ObjectDirective = {
-  created(el: HTMLElement, binding: DirectiveBinding) {
+  mounted(el: HTMLElement, binding: DirectiveBinding) {
+    const options: OptionsType = {
+      speed: 1,
+      direction: Direction.all,
+    };
+
     if (binding.modifiers.options) {
       options.speed = binding.value.speed || 1;
       options.direction = binding.value.direction || Direction.all;
     }
-  },
-  mounted(el: HTMLElement) {
+
     el.style.cursor = "grab";
     Array.from(el.children).forEach((child) => {
       const elem = child as HTMLElement;
@@ -63,7 +63,7 @@ const dragScroll: ObjectDirective = {
       previousPositionX = e.clientX;
       previousPositionY = e.clientY;
 
-      el.onmousemove = (e) => onMouseOver(e, el);
+      el.onmousemove = (e) => onMouseOver(e, el, options);
     };
 
     el.onmouseup = () => {
