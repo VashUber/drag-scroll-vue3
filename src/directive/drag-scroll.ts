@@ -1,4 +1,7 @@
-import { DirectiveBinding, ObjectDirective } from "vue";
+import { ObjectDirective } from "vue";
+
+let previousPositionX = 0;
+let previousPositionY = 0;
 
 enum Direction {
   all = "all",
@@ -10,9 +13,6 @@ type OptionsType = {
   speed: number;
   direction: Direction;
 };
-
-let previousPositionX = 0;
-let previousPositionY = 0;
 
 const onMouseOver = (e: MouseEvent, el: HTMLElement, options: OptionsType) => {
   const signX = previousPositionX < e.clientX ? -1 : 1;
@@ -40,16 +40,15 @@ const onMouseOver = (e: MouseEvent, el: HTMLElement, options: OptionsType) => {
   previousPositionY = e.clientY;
 };
 
-const dragScroll: ObjectDirective = {
-  mounted(el: HTMLElement, binding: DirectiveBinding) {
+const dragScroll: ObjectDirective<HTMLElement, OptionsType> = {
+  mounted(el, binding) {
     const options: OptionsType = {
       speed: 1,
       direction: Direction.all,
     };
 
     if (binding.modifiers.options) {
-      options.speed = binding.value.speed || 1;
-      options.direction = binding.value.direction || Direction.all;
+      Object.assign(options, binding.value);
     }
 
     el.style.cursor = "grab";

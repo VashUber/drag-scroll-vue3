@@ -9,7 +9,7 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/directive/drag-scroll.ts"),
       name: "drag-scroll",
-      fileName: (format) => `drag-scroll.${format}.js`,
+      fileName: (format) => `drag-scroll-vue3.${format}.js`,
     },
   },
 });

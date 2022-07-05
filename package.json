@@ -5,8 +5,8 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/drag-scroll.umd.js",
-  "module": "./dist/drag-scroll.es.js",
+  "main": "./dist/drag-scroll-vue3.umd.js",
+  "module": "./dist/drag-scroll-vue3.es.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VashUber/drag-scroll-vue3.git"
@@ -18,8 +18,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/drag-scroll.es.js",
-      "require": "./dist/drag-scroll.umd.js"
+      "import": "./dist/drag-scroll-vue3.es.js",
+      "require": "./dist/drag-scroll-vue3.umd.js"
     }
   },
   "scripts": {
