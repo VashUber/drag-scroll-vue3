@@ -15,20 +15,15 @@ type OptionsType = {
 };
 
 const onMouseOver = (e: MouseEvent, el: HTMLElement, options: OptionsType) => {
-  const signX = previousPositionX < e.clientX ? -1 : 1;
-  const signY = previousPositionY < e.clientY ? -1 : 1;
-
   const scrollTo: ScrollToOptions = {
     left:
       options.direction === Direction.all || options.direction === Direction.x
-        ? el.scrollLeft +
-          signX * Math.abs(e.clientX - previousPositionX) * options.speed
+        ? el.scrollLeft + (previousPositionX - e.clientX) * options.speed
         : 0,
 
     top:
       options.direction === Direction.all || options.direction === Direction.y
-        ? el.scrollTop +
-          signY * Math.abs(e.clientY - previousPositionY) * options.speed
+        ? el.scrollTop + (previousPositionY - e.clientY) * options.speed
         : 0,
 
     behavior: "smooth",
