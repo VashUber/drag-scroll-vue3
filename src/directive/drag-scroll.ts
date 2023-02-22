@@ -12,8 +12,19 @@ type OptionsType = {
 };
 
 const onMouseOver = (e: MouseEvent, el: HTMLElement, options: OptionsType) => {
-  el.scrollLeft = el.scrollLeft + e.movementX * -1 * options.speed;
-  el.scrollTop = el.scrollLeft + e.movementY * -1 * options.speed;
+  if (
+    options.direction === Direction.all ||
+    options.direction === Direction.x
+  ) {
+    el.scrollLeft = el.scrollLeft + e.movementX * -1 * options.speed;
+  }
+
+  if (
+    options.direction === Direction.all ||
+    options.direction === Direction.y
+  ) {
+    el.scrollTop = el.scrollTop + e.movementY * -1 * options.speed;
+  }
 };
 
 const dragScroll: ObjectDirective<HTMLElement, OptionsType> = {
