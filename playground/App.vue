@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="list" v-drag-scroll.options="{ direction: 'x' }">
+    <div class="list" v-drag-scroll.options="{ direction: 'y' }">
       <div v-for="i in 80" :key="i" class="block">
         {{ i }}
       </div>
     </div>
 
-    <div class="wrapper" v-drag-scroll.options="{ direction: 'y' }">
+    <div class="wrapper" v-drag-scroll.options="{ direction: 'x' }">
       <div class="xy-block"></div>
     </div>
 
@@ -16,7 +16,9 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import vDragScroll from '../src/drag-scroll'
+</script>
 
 <style lang="scss">
 * {
